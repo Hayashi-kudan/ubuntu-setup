@@ -21,6 +21,8 @@ sudo apt install -y \
 # echo "Install nvidia cuda"
 sudo apt install linux-headers-$(uname -r)
 cd ~/Downloads
+distro=$(. /etc/os-release;echo $ID$VERSION_ID | sed -e 's/\.//g')
+arch=$(/usr/bin/uname -m)
 wget https://developer.download.nvidia.com/compute/cuda/repos/$distro/$arch/cuda-keyring_1.0-1_all.deb
 sudo dpkg -i cuda-keyring_1.0-1_all.deb
 cd ..
