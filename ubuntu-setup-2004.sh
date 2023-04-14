@@ -9,9 +9,29 @@ sudo apt install -y google-chrome-stable
 echo "Install basic tools"
 sudo apt update
 sudo apt install -y \
+    wget \
+    curl \
     make \
     cmake \
     build-essential \
     git \
     terminator \
     vim
+
+echo "Install nvidia cuda"
+sudo apt update
+sudo apt install linux-headers-$(uname -r)
+wget https://developer.download.nvidia.com/compute/cuda/repos/$distro/$arch/cuda-keyring_1.0-1_all.deb
+sudo dpkg -i cuda-keyring_1.0-1_all.deb
+rm cuda-keyring_1.0-1_all.deb
+sudo apt update
+sudo apt install cuda
+sudo apt install nvidia-gds
+
+sudo apt install gnome-tweak-tool hwinfo
+
+sudo apt install software-properties-common apt-transport-https wget -y
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo apt update
+sudo apt install -y code
