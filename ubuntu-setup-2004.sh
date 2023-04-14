@@ -18,17 +18,17 @@ sudo apt install -y \
     terminator \
     vim
 
-echo "Install nvidia cuda"
-sudo apt update
+# echo "Install nvidia cuda"
 sudo apt install linux-headers-$(uname -r)
+cd ~/Downloads
 wget https://developer.download.nvidia.com/compute/cuda/repos/$distro/$arch/cuda-keyring_1.0-1_all.deb
 sudo dpkg -i cuda-keyring_1.0-1_all.deb
-rm cuda-keyring_1.0-1_all.deb
-sudo apt update
-sudo apt install cuda
-sudo apt install nvidia-gds
+cd ..
+# sudo apt update
+# sudo apt install cuda
+# sudo apt install nvidia-gds
 
-sudo apt install gnome-tweak-tool hwinfo
+sudo apt install -y gnome-tweak-tool hwinfo
 
 sudo apt install software-properties-common apt-transport-https wget -y
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
