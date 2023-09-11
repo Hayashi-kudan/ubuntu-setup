@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo "Install Google Chrome"
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 sudo apt update
 sudo apt install -y google-chrome-stable
@@ -57,19 +57,13 @@ sudo apt install -y flatpak gnome-software-plugin-flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub org.cloudcompare.CloudCompare
 
-echo "Install ROS Noetic"
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-sudo apt update
-sudo apt install -y ros-noetic-desktop-full
-echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-sudo apt install -y \
-    ros-noetic-rosbag \
-    ros-noetic-pcl-ros \
-    ros-noetic-rviz \
-    ros-noetic-cv-bridge \
-    ros-noetic-tf2-geometry-msgs \
-    ros-noetic-eigen-conversions \
-    ros-noetic-tf-conversions \
-    ros-noetic-xacro \
-    ros-noetic-robot-state-publisher
+echo "Install ROS2 Humble"
+echo $LANG
+sudo apt update && sudo apt install software-properties-common && sudo add-apt-repository universe
+apt-cache policy | grep universe
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+sudo apt update && sudo apt upgrade
+sudo apt install -y ros-humble-desktop
+sudo apt install -y build-essential python3-colcon-common-extensions python3-rosdep ros-humble-rmw-cyclonedds-cpp
+
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc

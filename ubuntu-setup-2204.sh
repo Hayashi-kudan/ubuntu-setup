@@ -5,6 +5,7 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 sudo apt update
 sudo apt install -y google-chrome-stable
+sudo rm /etc/apt/sources.list.d/google.list
 
 echo "Install basic tools"
 sudo apt update
@@ -15,6 +16,7 @@ sudo apt install -y \
     cmake \
     build-essential \
     git \
+    jq \
     terminator \
     vim
 sudo apt install -y gnome-tweak-tool hwinfo inxi cutecom snapd
