@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+sudo apt update && sudo apt upgrade -y
+
 echo "Install Google Chrome"
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
@@ -25,7 +27,7 @@ sudo apt install -y \
     cmake \
     terminator \
     vim \
-    gnome-tweak-tool \
+    gnome-tweaks \
     ethtool \
     net-tools \
     hwinfo \
@@ -34,13 +36,8 @@ sudo apt install -y \
     snapd \
     intel-gpu-tools
 
-echo "Install kazam, meld"
-sudo add-apt-repository ppa:sylvain-pineau/kazam
-sudo apt install kazam
-sudo apt install -y meld python3-nautilus
-sudo add-apt-repository ppa:boamaod/nautilus-compare
-sudo apt install -y nautilus-compare
-nautilus -q
+echo "Install meld"
+sudo apt install -y meld
 
 echo "Install VS code"
 sudo apt install software-properties-common apt-transport-https wget -y
@@ -58,12 +55,14 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak install flathub org.cloudcompare.CloudCompare
 
 echo "Install ROS2 Humble"
-echo $LANG
-sudo apt update && sudo apt install software-properties-common && sudo add-apt-repository universe
-apt-cache policy | grep universe
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-sudo apt update && sudo apt upgrade
-sudo apt install -y ros-humble-desktop
+sudo apt install -y software-properties-common
+sudo add-apt-repository universe
+sudo apt update && sudo apt install curl -y
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+sudo apt update && sudo apt upgrade -y
+sudo apt install ros-humble-desktop -y
+sudo apt install ros-dev-tools -y
 sudo apt install -y build-essential python3-colcon-common-extensions python3-rosdep ros-humble-rmw-cyclonedds-cpp
 
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
