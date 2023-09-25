@@ -65,6 +65,7 @@ sudo apt install ros-humble-desktop -y
 sudo apt install ros-dev-tools -y
 sudo apt install -y ros-$ROS_DISTRO-pcl-*
 sudo apt install -y ros-$ROS_DISTRO-gps-msgs
+sudo apt install -y ros-$ROS_DISTRO-image-transport-plugins
 sudo apt install -y build-essential python3-colcon-common-extensions python3-rosdep ros-humble-rmw-cyclonedds-cpp
 
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
