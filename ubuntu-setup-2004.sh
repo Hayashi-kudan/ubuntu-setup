@@ -19,8 +19,11 @@ sudo apt install -y \
     jq \
     terminator \
     vim
-sudo apt install -y gnome-tweak-tool hwinfo inxi cutecom snapd
+sudo apt install -y hwinfo inxi cutecom snapd
 sudo apt install -y intel-gpu-tools
+
+sudo apt install -y gnome-shell=3.36.4-1ubuntu1~20.04.2 gnome-shell-common=3.36.4-1ubuntu1~20.04.2 gnome-shell-extension-prefs=3.36.4-1ubuntu1~20.04.2
+sudo apt install -y gnome-tweak-tool
 
 echo "Install kdiff3, meld"
 sudo apt install -y kdiff3 meld

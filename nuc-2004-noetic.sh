@@ -25,7 +25,6 @@ sudo apt install -y \
     cmake \
     terminator \
     vim \
-    gnome-tweak-tool \
     ethtool \
     net-tools \
     hwinfo \
@@ -33,6 +32,9 @@ sudo apt install -y \
     cutecom \
     snapd \
     intel-gpu-tools
+
+sudo apt install -y gnome-shell=3.36.4-1ubuntu1~20.04.2 gnome-shell-common=3.36.4-1ubuntu1~20.04.2 gnome-shell-extension-prefs=3.36.4-1ubuntu1~20.04.2
+sudo apt install -y gnome-tweak-tool
 
 echo "Install kazam, meld"
 sudo add-apt-repository ppa:sylvain-pineau/kazam
