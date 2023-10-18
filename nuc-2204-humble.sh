@@ -69,3 +69,6 @@ sudo apt install -y ros-$ROS_DISTRO-image-transport-plugins
 sudo apt install -y build-essential python3-colcon-common-extensions python3-rosdep ros-humble-rmw-cyclonedds-cpp
 
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+
+echo "Install Third-party libraries"
+sudo apt install libpdal-dev
