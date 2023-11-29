@@ -100,4 +100,5 @@ sudo apt install -y \
     ros-noetic-xacro \
     ros-noetic-robot-state-publisher
 
-sudo apt install python3-venv
+sudo apt install -y python3-venv
+sudo apt install -y setserial
