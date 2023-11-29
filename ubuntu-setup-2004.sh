@@ -99,3 +99,5 @@ sudo apt install -y \
     ros-noetic-tf-conversions \
     ros-noetic-xacro \
     ros-noetic-robot-state-publisher
+
+sudo apt install python3-venv

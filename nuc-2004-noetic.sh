@@ -33,6 +33,8 @@ sudo apt install -y \
     snapd \
     intel-gpu-tools
 
+sudo apt install python-is-python3 -y
+
 sudo apt install -y gnome-shell=3.36.4-1ubuntu1~20.04.2 gnome-shell-common=3.36.4-1ubuntu1~20.04.2 gnome-shell-extension-prefs=3.36.4-1ubuntu1~20.04.2
 sudo apt install -y gnome-tweak-tool
 
@@ -76,6 +78,8 @@ sudo apt install -y \
     ros-noetic-robot-state-publisher
 
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+
+sudo apt install -y python3-rosdep
 
 echo "Install Third-party libraries"
 sudo apt install libpdal-dev
