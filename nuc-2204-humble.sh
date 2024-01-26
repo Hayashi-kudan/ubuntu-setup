@@ -72,4 +72,6 @@ echo "export RCUTILS_COLORIZED_OUTPUT=1" >> ~/.bashrc
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
 echo "Install Third-party libraries"
-sudo apt install libpdal-dev
+sudo apt install -y libpdal-dev
+sudo apt install -y python-is-python3
+pip install pyserial
