@@ -74,4 +74,5 @@ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 echo "Install Third-party libraries"
 sudo apt install -y libpdal-dev
 sudo apt install -y python-is-python3
+sudo apt install -y setserial
 pip install pyserial
