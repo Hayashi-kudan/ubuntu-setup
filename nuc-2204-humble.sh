@@ -67,6 +67,8 @@ sudo apt install -y ros-humble-pcl-*
 sudo apt install -y ros-humble-gps-msgs
 sudo apt install -y ros-humble-image-transport-plugins
 sudo apt install -y build-essential python3-colcon-common-extensions python3-rosdep ros-humble-rmw-cyclonedds-cpp
+sudo apt install -y ros-humble-turtlebot3*
+sudo apt install -y ros-humble-rqt-tf-tree
 
 echo "export RCUTILS_COLORIZED_OUTPUT=1" >> ~/.bashrc
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
