@@ -39,10 +39,10 @@ sudo apt install -y gnome-shell=3.36.4-1ubuntu1~20.04.2 gnome-shell-common=3.36.
 sudo apt install -y gnome-tweak-tool
 
 echo "Install kazam, meld"
-sudo add-apt-repository ppa:sylvain-pineau/kazam
-sudo apt install kazam
+sudo add-apt-repository -y ppa:sylvain-pineau/kazam
+sudo apt install -y kazam
 sudo apt install -y meld python3-nautilus
-sudo add-apt-repository ppa:boamaod/nautilus-compare
+sudo add-apt-repository -y ppa:boamaod/nautilus-compare
 sudo apt install -y nautilus-compare
 nautilus -q
 
