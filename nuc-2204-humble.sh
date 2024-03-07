@@ -39,6 +39,10 @@ sudo apt install -y \
 echo "Install meld"
 sudo apt install -y meld
 
+echo "Install kazam"
+sudo add-apt-repository ppa:sylvain-pineau/kazam
+sudo apt install -y kazam
+
 echo "Install VS code"
 sudo apt install software-properties-common apt-transport-https wget -y
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
@@ -77,4 +81,6 @@ echo "Install Third-party libraries"
 sudo apt install -y libpdal-dev
 sudo apt install -y python-is-python3
 sudo apt install -y setserial
-pip install pyserial
+sudo apt install -y vlc
+
+echo "run pip install pyserial"
