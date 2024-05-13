@@ -67,6 +67,7 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 sudo apt update
 sudo apt install -y ros-noetic-desktop-full
 sudo apt install -y \
+    ros-noetic-ddynamic-reconfigure \
     ros-noetic-rosbag \
     ros-noetic-pcl-ros \
     ros-noetic-rviz \
@@ -82,4 +83,4 @@ echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 sudo apt install -y python3-rosdep
 
 echo "Install Third-party libraries"
-sudo apt install libpdal-dev
+sudo apt install -y libpdal-dev
