@@ -78,9 +78,16 @@ sudo apt install -y \
     ros-noetic-xacro \
     ros-noetic-robot-state-publisher
 
+sudo apt install -y \
+    ros-noetic-rosserial \
+    ros-noetic-slam-gmapping \
+    ros-noetic-map-server \
+    ros-noetic-navigation
+
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 
-sudo apt install -y python3-rosdep
+sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 
 echo "Install Third-party libraries"
 sudo apt install -y libpdal-dev
+sudo apt install -y setserial
