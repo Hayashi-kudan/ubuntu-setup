@@ -31,6 +31,7 @@ sudo apt install -y \
     inxi \
     cutecom \
     snapd \
+    cpufrequtils \
     intel-gpu-tools
 
 sudo apt install python-is-python3 -y
@@ -89,5 +90,5 @@ echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 
 echo "Install Third-party libraries"
-sudo apt install -y libpdal-dev
-sudo apt install -y setserial
+sudo apt install -y libpdal-dev liburdfdom-tools setserial
+sudo snap install -y htop
