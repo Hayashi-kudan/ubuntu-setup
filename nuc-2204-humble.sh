@@ -39,9 +39,9 @@ sudo apt install -y \
 echo "Install meld"
 sudo apt install -y meld
 
-echo "Install kazam"
-sudo add-apt-repository ppa:sylvain-pineau/kazam
-sudo apt install -y kazam
+# echo "Install kazam"
+# sudo add-apt-repository ppa:sylvain-pineau/kazam
+# sudo apt install -y kazam
 
 echo "Install VS code"
 sudo apt install software-properties-common apt-transport-https wget -y

@@ -29,9 +29,10 @@ sudo add-apt-repository ppa:boamaod/nautilus-compare
 sudo apt install -y nautilus-compare
 nautilus -q
 
-echo "Install kazam"
-sudo add-apt-repository ppa:sylvain-pineau/kazam
-sudo apt install kazam
+# echo "Install kazam"
+# sudo add-apt-repository ppa:sylvain-pineau/kazam
+# sudo apt install kazam
+
 # sudo vim $HOME/.config/kazam/kazam.conf
 # autosave_picture_dir = /home/username/Pictures
 # rm -r ~/.config/pulse
