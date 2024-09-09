@@ -92,3 +92,8 @@ sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generat
 echo "Install Third-party libraries"
 sudo apt install -y libpdal-dev liburdfdom-tools setserial
 sudo snap install -y htop
+
+sudo add-apt-repository ppa:appimagelauncher-team/stable -y
+sudo apt update
+sudo apt install appimagelauncher -y
+sudo apt install aptitude -y
