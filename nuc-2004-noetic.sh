@@ -15,6 +15,7 @@ sudo apt install -y \
     python3-pip \
     bash \
     git \
+    bash-completion \
     unzip \
     xterm \
     build-essential \
@@ -34,7 +35,7 @@ sudo apt install -y \
     cpufrequtils \
     intel-gpu-tools
 
-sudo apt install python-is-python3 -y
+sudo aptitude install -y python-is-python3 python3-pip
 
 sudo apt install -y gnome-shell=3.36.4-1ubuntu1~20.04.2 gnome-shell-common=3.36.4-1ubuntu1~20.04.2 gnome-shell-extension-prefs=3.36.4-1ubuntu1~20.04.2
 sudo apt install -y gnome-tweak-tool
@@ -78,7 +79,6 @@ sudo apt update
 sudo apt install aptitude -y
 
 # Fix dependency issues by installing required packages first
-sudo aptitude install -y python-is-python3 python3-pip
 sudo aptitude install -y libboost-all-dev libopencv-dev libpcl-dev
 sudo aptitude install -y libsdl-image1.2-dev libsdl1.2-dev
 
