@@ -33,6 +33,7 @@ sudo apt install -y \
     cutecom \
     snapd \
     cpufrequtils \
+    lshw \
     intel-gpu-tools
 
 sudo aptitude install -y python-is-python3 python3-pip
@@ -101,6 +102,7 @@ sudo aptitude install -y ros-noetic-rosserial
 sudo aptitude install -y ros-noetic-slam-gmapping
 sudo aptitude install -y ros-noetic-map-server
 sudo aptitude install -y ros-noetic-navigation
+sudo aptitude install -y ros-noetic-gps-common
 
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 
