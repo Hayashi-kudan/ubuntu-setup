@@ -38,8 +38,8 @@ sudo apt install -y simplescreenrecorder
 
 echo "Install VS code"
 sudo apt install -y apt-transport-https
-wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" -y
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
 sudo apt update
 sudo apt install -y code
 
@@ -49,7 +49,7 @@ sudo snap install foxglove-studio
 echo "Install flatpak"
 sudo apt install -y flatpak gnome-software-plugin-flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub org.cloudcompare.CloudCompare -y
+flatpak install -y --noninteractive flathub org.cloudcompare.CloudCompare
 
 echo "Install ROS2 Humble"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
