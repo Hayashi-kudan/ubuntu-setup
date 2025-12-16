@@ -2,22 +2,17 @@
 sudo apt update && sudo apt upgrade -y
 
 echo "Install Google Chrome"
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /etc/apt/keyrings/google-chrome.gpg
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 sudo apt update
 sudo apt install -y google-chrome-stable
-sudo rm /etc/apt/sources.list.d/google.list
 
 echo "Install basic tools"
 sudo apt update
 sudo apt install -y \
-    wget \
     curl \
-    ca-certificates \
     python3-pip \
-    bash \
     git \
-    unzip \
     xterm \
     build-essential \
     libeigen3-dev \
@@ -33,18 +28,16 @@ sudo apt install -y \
     hwinfo \
     inxi \
     cutecom \
-    snapd \
     intel-gpu-tools
 
 echo "Install meld"
 sudo apt install -y meld
 
-# echo "Install kazam"
-# sudo add-apt-repository ppa:sylvain-pineau/kazam
-# sudo apt install -y kazam
+echo "Install simplescreenrecorder"
+sudo apt install -y simplescreenrecorder
 
 echo "Install VS code"
-sudo apt install software-properties-common apt-transport-https wget -y
+sudo apt install -y apt-transport-https
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" -y
 sudo apt update
@@ -59,28 +52,37 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak install flathub org.cloudcompare.CloudCompare -y
 
 echo "Install ROS2 Humble"
-sudo apt install -y software-properties-common
-sudo add-apt-repository universe -y
-sudo apt update && sudo apt install curl -y
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-sudo apt update && sudo apt upgrade -y
-sudo apt install ros-humble-desktop -y
-sudo apt install ros-dev-tools -y
-sudo apt install -y ros-humble-pcl-*
-sudo apt install -y ros-humble-gps-msgs
-sudo apt install -y ros-humble-image-transport-plugins
-sudo apt install -y build-essential python3-colcon-common-extensions python3-rosdep ros-humble-rmw-cyclonedds-cpp
-sudo apt install -y ros-humble-turtlebot3*
-sudo apt install -y ros-humble-rqt-tf-tree
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+"${SCRIPT_DIR}/ros2_humble_install.sh"
 
-echo "export RCUTILS_COLORIZED_OUTPUT=1" >> ~/.bashrc
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+# Install additional ROS2 packages
+sudo apt install -y \
+    ros-humble-pcl-* \
+    ros-humble-gps-msgs \
+    ros-humble-image-transport-plugins \
+    ros-humble-rmw-cyclonedds-cpp \
+    ros-humble-rqt-tf-tree
+
+# Add colorized output setting (bashrc setup is handled by ros2_humble_install.sh)
+if ! grep -qF "export RCUTILS_COLORIZED_OUTPUT=1" ~/.bashrc; then
+    echo "export RCUTILS_COLORIZED_OUTPUT=1" >> ~/.bashrc
+fi
 
 echo "Install Third-party libraries"
-sudo apt install -y libpdal-dev
-sudo apt install -y python-is-python3
-sudo apt install -y setserial
-sudo apt install -y vlc
+sudo apt install -y \
+    libpdal-dev \
+    python-is-python3 \
+    setserial \
+    vlc \
+    wmctrl \
+    maim
 
-echo "run pip install pyserial"
+echo "Install pip packages"
+pip install --user \
+    pyserial \
+    sphinx \
+    sphinx-rtd-theme \
+    myst-parser \
+    sphinx-simplepdf \
+    evo \
+    utm
