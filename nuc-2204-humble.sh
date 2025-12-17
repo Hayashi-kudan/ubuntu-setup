@@ -22,13 +22,11 @@ sudo apt install -y \
     cmake \
     terminator \
     vim \
-    gnome-tweaks \
     ethtool \
     net-tools \
     hwinfo \
     inxi \
-    cutecom \
-    intel-gpu-tools
+    cutecom
 
 echo "Install meld"
 sudo apt install -y meld
@@ -57,11 +55,14 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Install additional ROS2 packages
 sudo apt install -y \
+    ros-humble-xacro \
     ros-humble-pcl-* \
     ros-humble-gps-msgs \
     ros-humble-image-transport-plugins \
     ros-humble-rmw-cyclonedds-cpp \
-    ros-humble-rqt-tf-tree
+    ros-humble-rqt-tf-tree \
+    ros-humble-mavros-msgs \
+    ros-humble-diagnostic-updater
 
 # Add colorized output setting (bashrc setup is handled by ros2_humble_install.sh)
 if ! grep -qF "export RCUTILS_COLORIZED_OUTPUT=1" ~/.bashrc; then
